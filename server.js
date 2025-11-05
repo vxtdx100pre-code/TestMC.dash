@@ -16,6 +16,7 @@ app.get('/', (req, res) => {
 app.post('/recibir-datos', (req, res) => {
   const data = req.body;
   console.log('Datos recibidos:', data);
+  // Aquí puedes guardar los datos en una base de datos o un archivo
   res.sendStatus(200);
 });
 

